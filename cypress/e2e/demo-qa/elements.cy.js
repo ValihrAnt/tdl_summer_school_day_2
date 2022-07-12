@@ -10,7 +10,16 @@ context("Elements Page", () => {
     // fill in textboxes with necessary information
     // validate the paragraphs
     it("Filling in Text Boxes", () => {
-      // add the necessary steps
+      TextBoxPage.inputName.should("be.visible").type("Adrians Jaunkierpis");
+      TextBoxPage.inputEmail.type("adrians.email@gmail.com");
+      TextBoxPage.inputCurrentAddress.type("Fake Street 123");
+      TextBoxPage.inputPermanentAddress.type("Real Street 321");
+      TextBoxPage.submit.click();
+      //validating
+      TextBoxPage.validateName.should("have.text", "Name:Adrians Jaunkierpis");
+      TextBoxPage.validateEmail.should("have.text", "Email:adrians.email@gmail.com");
+      TextBoxPage.validateCurrentAddress.should("have.text", "Current Address :Fake Street 123 ");
+      TextBoxPage.validatePermanentAddress.should("have.text", "Permananet Address :Real Street 321");
     });
   });
 
