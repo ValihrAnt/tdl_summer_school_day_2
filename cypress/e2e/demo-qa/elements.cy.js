@@ -2,6 +2,7 @@ import TextBoxPage from "../../pageObjects/textBoxPage";
 import CheckBoxPage from "../../pageObjects/CheckBoxPage";
 import RadioButtons from "../../pageObjects/RadioButtons";
 import WebTables from "../../pageObjects/WebTables";
+import ButtonsPage from "../../pageObjects/ButtonsPage";
 
 
 context("Elements Page", () => {
@@ -9,7 +10,7 @@ context("Elements Page", () => {
     beforeEach(() => {
       TextBoxPage.visit();
     });
-
+                
     // Create texbox scenario
     // fill in textboxes with necessary information
     // validate the paragraphs
@@ -24,7 +25,7 @@ context("Elements Page", () => {
       TextBoxPage.validateEmail.should("have.text", "Email:adrians.email@gmail.com");
       TextBoxPage.validateCurrentAddress.should("have.text", "Current Address :Fake Street 123 ");
       TextBoxPage.validatePermanentAddress.should("have.text", "Permananet Address :Real Street 321");
-    });
+    }); 
   });
 
   context("Check box scenarios", () => {
@@ -44,6 +45,7 @@ context("Elements Page", () => {
       CheckBoxPage.selectValue.contains("General").click();
       CheckBoxPage.selectValue.contains("Excel File.doc").click();
       //CheckBoxPage.validateCheckmarkNotes.should("have.class", "rct-icon rct-icon-check");
+      CheckBoxPage.checkboxTree.contains("#rct-checkbox").should("have.class", "rct-icon-check")
       //TODO validate checkboxes
     });
     // Create checkbox scenario 2:
@@ -89,17 +91,31 @@ context("Elements Page", () => {
     // search for the user based on previously added information
     // validate tha the user is visible
     it("WebTables scenario 1", () => {
-
+      WebTables.addRecord.should("be.visible").click();
+      WebTables.inputFirstName.should("be.visible").type("Adrians");
+      WebTables.inputLastName.should("be.visible").type("Jaunkierpis");
+      WebTables.inputEmail.type("adrians.jaunkierpis@gmail.com");
+      WebTables.inputAge.type("20");
+      WebTables.inputSalary.type("5");
+      WebTables.inputDepartment.type("No");
+      WebTables.submit.click();
+      //WebTables.validateTable.should("have.text", "Adrians")  
     });
     // Create Scenario 2:
     // Delete all table rows
     // Validate that we see text - No rows found
     it("WebTables scenario 2", () => {
-      
+      WebTables.deleteTable1.click();
+      WebTables.deleteTable3.click();
+      WebTables.deleteTable2.click();
+      WebTables.validateDeletion.contains("No rows found");
     });
   });
 
   context("Buttons scenarios", () => {
+    beforeEach(() => {
+      ButtonsPage.visit();
+    });
     // Create buttons clicking scenario
     // Create Buttons page
     // Check documentation https://docs.cypress.io/api/commands/and for how to perform different types of clicking
@@ -110,9 +126,12 @@ context("Elements Page", () => {
     // Do dynamic click
     // Validate dynamic click message
     it("Buttons scenario", () => {
-      
+      ButtonsPage.dblClickButton.dblclick();
+      ButtonsPage.dblClickMessage.should("be.visible");
+      ButtonsPage.rightClickButton.rightclick();
+      ButtonsPage.rightClickMessage.should("be.visible");
+      ButtonsPage.dynamicClickButton.click();
+      ButtonsPage.dynamicClickMessage.should("be.visible");
     });
   });
 });
-
-//testing github connection yo

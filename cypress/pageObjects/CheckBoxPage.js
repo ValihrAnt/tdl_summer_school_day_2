@@ -17,8 +17,8 @@ class CheckBoxPage extends BasePage {
   static get validateCheckmarkNotes() {
     return cy.get("#tree-node-classified");
   }
-  static get submit() {
-    return cy.get("#submit");
+  static get checkboxTree() {
+    return cy.get("#tree-node");
   }
   static get submit() {
     return cy.get("#submit");

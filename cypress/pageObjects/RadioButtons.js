@@ -10,14 +10,5 @@ class RadioButtons extends BasePage {
   static get validateRadio() {
     return cy.get(".text-success");
   }
-  static get submit() {
-    return cy.get("#submit");
-  }
-  static get submit() {
-    return cy.get("#submit");
-  }
-  static get submit() {
-    return cy.get("#submit");
-  }
 }
 export default RadioButtons;
