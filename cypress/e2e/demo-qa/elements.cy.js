@@ -44,9 +44,11 @@ context("Elements Page", () => {
       CheckBoxPage.selectValue.contains("Angular").click();
       CheckBoxPage.selectValue.contains("General").click();
       CheckBoxPage.selectValue.contains("Excel File.doc").click();
-      //CheckBoxPage.validateCheckmarkNotes.should("have.class", "rct-icon rct-icon-check");
-      CheckBoxPage.checkboxTree.should("have.class", "rct-icon-check");
-      //TODO validate checkboxes
+      CheckBoxPage.validateCheckmarks.contains("notes");
+      CheckBoxPage.validateCheckmarks.contains("react");
+      CheckBoxPage.validateCheckmarks.contains("angular");
+      CheckBoxPage.validateCheckmarks.contains("general");
+      CheckBoxPage.validateCheckmarks.contains("excelFile");
     });
     // Create checkbox scenario 2:
     // Click expand button
@@ -55,7 +57,11 @@ context("Elements Page", () => {
     it ("Checkbox scenario 2", () => {
       CheckBoxPage.clickCheckbox.click();
       CheckBoxPage.selectValue.contains("Office").click();
-      //TODO validate checkboxes
+      CheckBoxPage.validateCheckmarks.should("contains.text","office");
+      CheckBoxPage.validateCheckmarks.contains("public"); //ar kuru pareizak? should vai contains?
+      CheckBoxPage.validateCheckmarks.contains("private");
+      CheckBoxPage.validateCheckmarks.contains("classified");
+      CheckBoxPage.validateCheckmarks.contains("general");
     });
   });
 

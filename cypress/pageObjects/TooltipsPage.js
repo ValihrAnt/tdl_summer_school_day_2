@@ -16,8 +16,17 @@ class TooltipsPage extends BasePage {
   static get tooltip() {
     return cy.get(".tooltip-inner");
   }
-  static get button() {
-    return cy.get("#toolTipButton");
+  static get buttonPop() {
+    return cy.get("#buttonToolTip > .tooltip-inner");
+  }
+  static get textfieldPop() {
+    return cy.get("#textFieldToolTip > .tooltip-inner");
+  }
+  static get contraryPop() {
+    return cy.get("#contraryTexToolTip > .tooltip-inner");
+  }
+  static get sectionPop() {
+    return cy.get("#sectionToolTip > .tooltip-inner");
   }
 
 }

@@ -1,6 +1,7 @@
 // import page objects
 import SelectablePage from "../../pageObjects/SelectablePage";
 import TooltipsPage from "../../pageObjects/TooltipsPage";
+import ProgressBarPage from "../../pageObjects/ProgressBarPage";
 
 context("Interactions", () => {
   context("Selectable", () => {
@@ -34,19 +35,40 @@ context("Interactions", () => {
       SelectablePage.groupItem.contains("Eight").click().should("have.class", "active");
     })
   });
-  context("Bonus tasks", () => {
+  context("Bonus tasks ", () => {
     beforeEach(() => {
       TooltipsPage.visit();
     });
     it ("Bonus task 1", () => {
       TooltipsPage.button.trigger('mouseover');
-      TooltipsPage.tooltip.should("have.text", "You hovered over the Button").end();
+      TooltipsPage.buttonPop.should("be.visible");
       TooltipsPage.inputField.trigger('mouseover');
-      TooltipsPage.tooltip.first().should("have.text", "You hovered over the text field");
+      TooltipsPage.textfieldPop.first().should("be.visible");
       TooltipsPage.textHover.first().trigger('mouseover');
-      TooltipsPage.tooltip.should("have.text", "You hovered over the Contrary");
+      TooltipsPage.contraryPop.should("be.visible");
       TooltipsPage.textHover.last().trigger('mouseover');
-      TooltipsPage.tooltip.should("have.text", "You hovered over the 1.10.32");
+      TooltipsPage.sectionPop.should("be.visible");
+    });
+  });
+  context("Bonus task 2", () => {
+      beforeEach(() => {
+        ProgressBarPage.visit();
+      });
+      it ("Bonus task 2", () => {
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.contains("24"); //Probably very suboptimal solution
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.should("contains.text", "25");
+
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.contains("74"); //Probably very suboptimal solution
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.should("contains.text", "75");
+
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.contains("98"); //Probably very suboptimal solution
+      ProgressBarPage.startStopButton.click();
+      ProgressBarPage.progressBar.should("contains.text", "99");
     });
   });
 });

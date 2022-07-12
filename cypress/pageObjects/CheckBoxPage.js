@@ -14,18 +14,8 @@ class CheckBoxPage extends BasePage {
   static get selectValue() {
     return cy.get("[class*='rct-node rct-node-parent rct-node-expanded']");
   }
-  static get validateCheckmarkNotes() {
-    return cy.get("#tree-node-classified");
+  static get validateCheckmarks() {
+    return cy.get(".text-success");
   }
-  static get checkboxNotes() {
-    return cy.get();
-  }
-  static get submit() {
-    return cy.get("#submit");
-  }
-  static get submit() {
-    return cy.get("#submit");
-  }
-
 }
 export default CheckBoxPage;
