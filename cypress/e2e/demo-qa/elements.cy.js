@@ -1,4 +1,8 @@
 import TextBoxPage from "../../pageObjects/textBoxPage";
+import CheckBoxPage from "../../pageObjects/CheckBoxPage";
+import RadioButtons from "../../pageObjects/RadioButtons";
+import WebTables from "../../pageObjects/WebTables";
+
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
@@ -24,19 +28,39 @@ context("Elements Page", () => {
   });
 
   context("Check box scenarios", () => {
+    beforeEach(() => {
+      CheckBoxPage.visit();
+    });
     // Create CheckBoxPage page object
     // Create checkbox scenario 1:
     // Click the "+"/expand button
     // Click Notes, React, Angular, General, Excel File.doc
     // Validate the clicked checkboxes
-
+    it ("Checkbox scenario 1", () => {
+      CheckBoxPage.clickCheckbox.click();
+      CheckBoxPage.selectNotes.contains("Notes").click();
+      CheckBoxPage.selectValue.contains("React").click();
+      CheckBoxPage.selectValue.contains("Angular").click();
+      CheckBoxPage.selectValue.contains("General").click();
+      CheckBoxPage.selectValue.contains("Excel File.doc").click();
+      //CheckBoxPage.validateCheckmarkNotes.should("have.class", "rct-icon rct-icon-check");
+      //TODO validate checkboxes
+    });
     // Create checkbox scenario 2:
     // Click expand button
     // Click Office
     // Validate the checked checkboxes
+    it ("Checkbox scenario 2", () => {
+      CheckBoxPage.clickCheckbox.click();
+      CheckBoxPage.selectValue.contains("Office").click();
+      //TODO validate checkboxes
+    });
   });
 
   context("Radio button scenarios", () => {
+    beforeEach(() => {
+      RadioButtons.visit();
+    });
     // Create RadioButtons page object
     // Scenario 1:
     // Click yesButton
@@ -44,9 +68,19 @@ context("Elements Page", () => {
     // click impressiveButton
     // validate the message
     // noButton - validate that the button exists but is disabled
+    it ("RadioButtons scenario 1", () => {
+      RadioButtons.radioSelect.contains("Yes").click();
+      RadioButtons.validateRadio.should("have.text", "Yes");
+      RadioButtons.radioSelect.contains("Impressive").click();
+      RadioButtons.validateRadio.should("have.text", "Impressive");
+      RadioButtons.radioSelect.contains("No").should("have.class", "disabled");
+    });
   });
 
   context("Web tables scenarios", () => {
+    beforeEach(() => {
+      WebTables.visit();
+    });
     // Create WebTables page object
     // Create scenario 1:
     // Click add record button
@@ -54,10 +88,15 @@ context("Elements Page", () => {
     // click submit button
     // search for the user based on previously added information
     // validate tha the user is visible
+    it("WebTables scenario 1", () => {
 
+    });
     // Create Scenario 2:
     // Delete all table rows
     // Validate that we see text - No rows found
+    it("WebTables scenario 2", () => {
+      
+    });
   });
 
   context("Buttons scenarios", () => {
@@ -70,6 +109,9 @@ context("Elements Page", () => {
     // Validate the right click message
     // Do dynamic click
     // Validate dynamic click message
+    it("Buttons scenario", () => {
+      
+    });
   });
 });
 
