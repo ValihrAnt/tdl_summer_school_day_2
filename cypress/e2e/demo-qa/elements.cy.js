@@ -45,7 +45,7 @@ context("Elements Page", () => {
       CheckBoxPage.selectValue.contains("General").click();
       CheckBoxPage.selectValue.contains("Excel File.doc").click();
       //CheckBoxPage.validateCheckmarkNotes.should("have.class", "rct-icon rct-icon-check");
-      CheckBoxPage.checkboxTree.contains("#rct-checkbox").should("have.class", "rct-icon-check")
+      CheckBoxPage.checkboxTree.should("have.class", "rct-icon-check");
       //TODO validate checkboxes
     });
     // Create checkbox scenario 2:
